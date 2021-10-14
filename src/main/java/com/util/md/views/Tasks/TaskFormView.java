@@ -1,12 +1,15 @@
 package com.util.md.views.Tasks;
 
 import com.util.md.data.entity.Addresses;
+import com.util.md.data.entity.Categories;
 import com.util.md.data.entity.Users;
+import com.util.md.data.service.repository.CategorieRepository;
 import com.util.md.security.AuthenticatedUser;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.littemplate.LitTemplate;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +28,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.security.PermitAll;
 
@@ -67,17 +71,29 @@ public class TaskFormView  extends LitTemplate implements HasStyle {
     /**
      * Creates a new TaskFormView.
      */
-    public TaskFormView(AuthenticatedUser authenticatedUser) {
+
+
+    public TaskFormView(AuthenticatedUser authenticatedUser, CategorieRepository categorieRepository) {
         Optional<Users> maybeUser = authenticatedUser.get();
+        List<Categories> categories = categorieRepository.findAll();
+        List<String>all_categories = new ArrayList<>();
+
+
+        for (int i = 0; i < categories.size(); i++){
+            all_categories.add(categories.get(i).getName());
+        }
+
         //maybeUser.
         if (maybeUser.isPresent()) {
             Users user = maybeUser.get();
-            Addresses addresses = user.getAddressesByAddressId();
+            //Addresses addresses = user.getAddressesByAddressId();
             nume.setValue(user.getName());
             prenume.setValue(user.getSurename());
             email.setValue(user.getEmail());
-            str.setValue(addresses.getLocation());
+            serviceSelect.setItems(all_categories);
 
+           // str.setValue(addresses.getLocation());
+            //pret.setValue(categories.getName());
         }
         // You can initialise any data required for the connected UI components here.
     }

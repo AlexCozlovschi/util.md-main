@@ -125,14 +125,14 @@ public class Users {
         this.dataByDataId = dataByDataId;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "addresses_id", referencedColumnName = "id", nullable = false)
-    public Addresses getAddressesByAddressId(){
-        return addressesByAddressId;
-
-    }
-
-    public void setAddressesByAddressId(Addresses addressesByAddressId) {
-        this.addressesByAddressId = addressesByAddressId;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "addresses_id", referencedColumnName = "id", nullable = false)
+//    public Addresses getAddressesByAddressId(){
+//        return addressesByAddressId;
+//
+//    }
+//
+//    public void setAddressesByAddressId(Addresses addressesByAddressId) {
+//        this.addressesByAddressId = addressesByAddressId;
+//    }
 }

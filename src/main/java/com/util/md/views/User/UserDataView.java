@@ -3,6 +3,7 @@ package com.util.md.views.User;
 import com.util.md.data.entity.Addresses;
 import com.util.md.data.entity.Data;
 import com.util.md.data.entity.Users;
+import com.util.md.data.service.repository.AddressRepository;
 import com.util.md.security.AuthenticatedUser;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -11,8 +12,10 @@ import com.vaadin.flow.component.template.Id;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.security.PermitAll;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -44,6 +47,10 @@ public class UserDataView extends LitTemplate {
     /**
      * Creates a new UserDataView.
      */
+    @Autowired
+    AddressRepository addressRepository;
+
+
 
 
     public UserDataView(AuthenticatedUser authenticatedUser) {
@@ -53,13 +60,16 @@ public class UserDataView extends LitTemplate {
         if (maybeUser.isPresent()) {
             Users user = maybeUser.get();
             Data data = user.getDataByDataId();
-            Addresses addresses = user.getAddressesByAddressId();
+            List<Addresses> addressesList = addressRepository.findAll();
 
+
+           // Optional<Addresses> value_Adres = Optional.of(addressRepository.findAddressesByDataByUsersId((int) user.getId()));
+           // System.out.println(value_Adres);
 
             email.setValue(user.getEmail());
             nume.setValue(user.getName());
             prenume.setValue(user.getSurename());
-            adresa.setValue(addresses.getLocation());
+            //adresa.setValue(String.valueOf(getAddress(4)));
 
 
 

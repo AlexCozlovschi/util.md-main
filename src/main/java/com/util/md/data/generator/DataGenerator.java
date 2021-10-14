@@ -63,11 +63,12 @@ public class DataGenerator {
             user.setName("Admin");
             user.setSurename("Admin");
             user.setDataByDataId(data);
-            user.setAddressesByAddressId(addresses);
+            //user.setAddressesByAddressId(addresses);
+            addresses.setDataByUsersId(user);
 
+            userRepository.save(user);
 
             addressRepository.save(addresses);
-            userRepository.save(user);
 
 
             //Adding user
@@ -91,9 +92,11 @@ public class DataGenerator {
             user2.setName("User");
             user2.setSurename("User");
             user2.setDataByDataId(data2);
-            user2.setAddressesByAddressId(addresses2);
-            addressRepository.save(addresses2);
+            //user2.setAddressesByAddressId(addresses2);
+            addresses2.setDataByUsersId(user2);
             userRepository.save(user2);
+            addressRepository.save(addresses2);
+
 
 
             logger.info("Generated demo data");

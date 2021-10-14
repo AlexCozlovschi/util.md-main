@@ -2,7 +2,9 @@ package com.util.md.security;
 
 import java.util.Optional;
 
+import com.util.md.data.entity.Addresses;
 import com.util.md.data.entity.Users;
+import com.util.md.data.service.repository.AddressRepository;
 import com.util.md.data.service.repository.UserRepository;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinServletRequest;
@@ -19,6 +21,8 @@ public class AuthenticatedUser {
 
     @Autowired
     private UserRepository userRepository;
+
+
 
     private UserDetails getAuthenticatedUser() {
         SecurityContext context = SecurityContextHolder.getContext();
@@ -37,6 +41,8 @@ public class AuthenticatedUser {
         }
         return Optional.of(userRepository.findByEmail(details.getUsername()));
     }
+
+
 
     public void logout() {
         UI.getCurrent().getPage().setLocation(SecurityConfiguration.LOGOUT_URL);

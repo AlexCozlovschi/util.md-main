@@ -12,4 +12,6 @@ import javax.persistence.Lob;
 public interface UserRepository extends JpaRepository<Users, Integer> {
 
     Users findByEmail(String email);
+
+
 }

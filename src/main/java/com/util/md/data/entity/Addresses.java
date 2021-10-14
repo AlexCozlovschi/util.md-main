@@ -67,5 +67,14 @@ public class Addresses {
         return Objects.hash(id, location, name, details);
     }
 
+    @ManyToOne
+    @JoinColumn(name = "users_id", referencedColumnName = "id", nullable = false)
+    public Users getDataByUsersId() {
+        return dataByUsersId;
+    }
+
+    public void setDataByUsersId(Users dataByDataId) {
+        this.dataByUsersId = dataByDataId;
+    }
 
 }

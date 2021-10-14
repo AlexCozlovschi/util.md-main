@@ -7,6 +7,7 @@ import java.util.Optional;
 import com.util.md.data.entity.Data;
 import com.util.md.data.entity.Users;
 
+import com.util.md.views.Categories.AddCategoriesView;
 import com.util.md.views.Tasks.TasksView;
 import com.util.md.views.User.UserRegistrationView;
 import com.util.md.views.User.UserView;
@@ -136,6 +137,7 @@ public class MainLayout extends AppLayout {
                 new MenuItemInfo("User", "la la-globe", UserView.class),
                 new MenuItemInfo("Tasks", "la la-globe", TasksView.class),//
                 new MenuItemInfo("Master Manager", "la la-globe", MasterView.class),
+                new MenuItemInfo("Categories", "la la-globe", AddCategoriesView.class),
 
         };
         List<RouterLink> links = new ArrayList<>();

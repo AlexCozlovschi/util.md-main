@@ -89,14 +89,16 @@ public class UserRegistrationModel {
 //        }
         users.setRole(Collections.singleton(Role.USER));
         users.setDataByDataId(data);
-        users.setAddressesByAddressId(addresses);
+        //users.setAddressesByAddressId(addresses);
+        addresses.setDataByUsersId(users);
 
 
 
         //Saving entity
-        addressRepository.save(addresses);
+
         dataRepository.save(data);
         userRepository.save(users);
+        addressRepository.save(addresses);
 
 
     }
