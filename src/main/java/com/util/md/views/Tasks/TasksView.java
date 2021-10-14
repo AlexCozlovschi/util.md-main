@@ -41,7 +41,7 @@ public class TasksView extends VerticalLayout {
     public Component pages;
     public Map<Tab, Component> tabsToPages = new HashMap<>();
 
-    public TasksView(@Autowired ActiveTaskView activeTaskView, CCardFormView cCardFormView) {
+    public TasksView(@Autowired ActiveTaskView activeTaskView, TaskFormView cCardFormView) {
 
         tabsPages(activeTaskView, cCardFormView);
         tabs.addSelectedChangeListener(event-> {
@@ -53,7 +53,7 @@ public class TasksView extends VerticalLayout {
         add(tabs,pages);
 
     }
-    public void tabsPages(ActiveTaskView activeTaskView, CCardFormView cCardFormView){
+    public void tabsPages(ActiveTaskView activeTaskView, TaskFormView cCardFormView){
 
         Tab tab1 = new Tab("Active Tasks");
         Component page1 = activeTaskView;
